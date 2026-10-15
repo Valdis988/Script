@@ -24,15 +24,26 @@ class SiteController extends Controller
 
     public function booking()
     {
-        // Передаємо змінну до представлення
-        $clinicInfo = 'Заповніть форму нижче, щоб записати вашого улюбленця на прийом. Наші адміністратори зв\'яжуться з вами для підтвердження часу.';
 
-        return view('site.booking', ['clinicInfo' => $clinicInfo]);
+        $services = [
+            'Консультація та огляд',
+            'Вакцинація та чипування',
+            'Хірургія',
+            'УЗД та аналізи'
+        ];
+
+
+        $minDate = now()->format('Y-m-d');
+
+        return view('site.booking', [
+            'services' => $services,
+            'minDate' => $minDate
+        ]);
     }
 
     public function bookingStore(BookingRequest $request)
     {
-        // Повертаємо сторінку підтвердження з валідними даними
+        
         return view('site.booking-confirm', $request->validated());
     }
 
