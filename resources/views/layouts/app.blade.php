@@ -94,6 +94,7 @@
     <a href="{{ url('/') }}" class="logo">🐾 Вуса, Лапи, Хвіст</a>
     <nav>
         <a href="{{ url('/') }}">Головна</a>
+        <a href="{{ url('/about') }}">Про нас</a>
         <a href="{{ url('/services') }}">Послуги</a>
         <a href="{{ url('/doctors') }}">Ветеринари</a>
         <a href="{{ url('/booking') }}">Запис</a>
