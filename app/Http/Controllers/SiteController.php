@@ -2,8 +2,12 @@
 namespace App\Http\Controllers;
 use App\Http\Requests\EntryRequest;
 use App\Http\Requests\BookingRequest;
+use App\Models\Country;
 class SiteController extends Controller
 {
+
+
+
     public function say(string $message = 'Привіт')
     {
         return view('site.say', ['message' => $message]);
@@ -43,7 +47,7 @@ class SiteController extends Controller
 
     public function bookingStore(BookingRequest $request)
     {
-        
+        // Повертаємо сторінку підтвердження з валідними даними
         return view('site.booking-confirm', $request->validated());
     }
 
