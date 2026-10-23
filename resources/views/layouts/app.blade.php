@@ -85,6 +85,49 @@
             color: #bdc3c7;
             margin-top: 10px;
         }
+
+
+        nav[role="navigation"] > .flex.justify-between {
+            display: none;
+        }
+
+
+        nav[role="navigation"] span.relative.inline-flex.items-center,
+        nav[role="navigation"] a.relative.inline-flex.items-center {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 40px;
+            height: 40px;
+            margin: 0 4px;
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #555;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+
+        nav[role="navigation"] svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .vet-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .vet-card { width: 300px; border: 1px solid #e3e3ee; border-radius: 8px; padding: 20px; text-align: center; background: #fff; }
+        .vet-position { color: #20b2aa; font-weight: 700; }
+        .vet-card .actions { display: flex; gap: 10px; justify-content: center; align-items: center; }
+        .form-group { margin-bottom: 15px; }
+        .form-group input { width: 100%; padding: 8px; box-sizing: border-box; }
+        .error { color: #d9534f; font-size: 14px; }
+        .success { color: #2e7d32; background: #e8f5e9; padding: 10px; border-radius: 6px; }
+        .filter { margin: 15px 0; }
+
+        
+        nav[role="navigation"] svg { width: 1.25rem; height: 1.25rem; }
+
+
     </style>
 </head>
 <body>
@@ -96,9 +139,10 @@
         <a href="{{ url('/') }}">Головна</a>
         <a href="{{ url('/about') }}">Про нас</a>
         <a href="{{ url('/services') }}">Послуги</a>
-        <a href="{{ url('/doctors') }}">Ветеринари</a>
+        <a href="{{ route('veterinarians.index') }}">Ветеринари</a>
         <a href="{{ url('/booking') }}">Запис</a>
         <a href="{{ url('/contact') }}">Контакти</a>
+        <a href="{{ route('country.index') }}">Країни</a>
     </nav>
 </header>
 

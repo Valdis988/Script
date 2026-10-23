@@ -17,7 +17,7 @@ class BookingRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email'],
             'phone' => ['required', 'string', 'min:10', 'max:15'], // Додано телефон
-            'date' => ['required', 'date', 'after_or_equal:today'], // Додано дату 
+            'date' => ['required', 'date', 'after_or_equal:today'], // Додано дату
             'message' => ['required', 'string', 'min:10'],
         ];
     }
