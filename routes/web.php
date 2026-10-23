@@ -12,6 +12,7 @@ Route::resource(
     'country',
     CountryController::class
 );
+Route::resource('/veterinarians', VeterinarianController::class);
 
 Route::view('/', 'welcome')->name('welcome');
 
@@ -42,5 +43,4 @@ Route::view('/about', 'site.about')->name('site.about');
 
 Route::get('/booking', [SiteController::class, 'booking'])->name('booking.form');
 Route::post('/booking', [SiteController::class, 'bookingStore'])->name('booking.store');
-Route::resource('veterinarians', VeterinarianController::class);
 Route::view('/services', 'site.services')->name('site.services');
