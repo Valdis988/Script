@@ -125,8 +125,79 @@
         .filter { margin: 15px 0; }
 
 
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin: 24px 0;
+        }
+
+        .blog-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .blog-card-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .blog-card-body {
+            padding: 16px;
+        }
+
+        .blog-category {
+            font-size: 13px;
+            color: #2563eb;
+        }
+
+        .blog-meta {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* Додатково: форми, помилки та пагінація */
+        .form-row { margin-bottom: 16px; }
+        .form-row label { display: block; margin-bottom: 4px; }
+        .form-row input,
+        .form-row textarea,
+        .form-row select { width: 100%; padding: 8px; box-sizing: border-box; }
+        .error { color: #dc2626; font-size: 13px; margin: 4px 0 0; }
+
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 8px 10px; border-bottom: 1px solid #e5e7eb; text-align: left; }
+
+        .pagination { display: flex; gap: 16px; align-items: center; margin: 20px 0; }
+        .pagination .disabled { color: #999; }
+
+
+
         nav[role="navigation"] svg { width: 1.25rem; height: 1.25rem; }
 
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin: 24px 0;
+        }
+        .service-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+        .service-card h3 { margin-top: 0; color: #20b2aa; }
+        .service-price { font-weight: 600; }
+        .muted { color: #888; }
 
     </style>
 </head>
@@ -138,7 +209,7 @@
     <nav>
         <a href="{{ url('/') }}">Головна</a>
         <a href="{{ url('/about') }}">Про нас</a>
-        <a href="{{ url('/services') }}">Послуги</a>
+        <a href="{{ route('services') }}">Послуги</a>
         <a href="{{ route('veterinarians.index') }}">Ветеринари</a>
         <a href="{{ url('/booking') }}">Запис</a>
         <a href="{{ url('/contact') }}">Контакти</a>

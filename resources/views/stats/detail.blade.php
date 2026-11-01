@@ -16,32 +16,32 @@
 
     <table>
         <thead>
-            <tr>
-                <th>Дата і час</th>
-                <th>Сторінка</th>
-                <th>Метод</th>
-                <th>Маршрут</th>
-                <th>Пристрій</th>
-                <th>IP</th>
-                <th>Статус</th>
-            </tr>
+        <tr>
+            <th>Дата і час</th>
+            <th>Сторінка</th>
+            <th>Метод</th>
+            <th>Маршрут</th>
+            <th>Пристрій</th>
+            <th>IP</th>
+            <th>Статус</th>
+        </tr>
         </thead>
         <tbody>
-            @forelse ($rows as $row)
-                <tr>
-                    <td>{{ $row->visited_at->format('d.m.Y H:i:s') }}</td>
-                    <td>{{ $row->page }}</td>
-                    <td>{{ $row->method }}</td>
-                    <td>{{ $row->route_name ?? '—' }}</td>
-                    <td>{{ $row->device }}</td>
-                    <td>{{ $row->ip }}</td>
-                    <td>{{ $row->status }}</td>
-                </tr>
-            @empty
-                <tr>
-                    <td colspan="7">Записів немає.</td>
-                </tr>
-            @endforelse
+        @forelse ($rows as $row)
+            <tr>
+                <td>{{ $row->visited_at->format('d.m.Y H:i:s') }}</td>
+                <td>{{ $row->page }}</td>
+                <td>{{ $row->method }}</td>
+                <td>{{ $row->route_name ?? '—' }}</td>
+                <td>{{ $row->device }}</td>
+                <td>{{ $row->ip }}</td>
+                <td>{{ $row->status }}</td>
+            </tr>
+        @empty
+            <tr>
+                <td colspan="7">Записів немає.</td>
+            </tr>
+        @endforelse
         </tbody>
     </table>
 
