@@ -124,7 +124,7 @@
         .success { color: #2e7d32; background: #e8f5e9; padding: 10px; border-radius: 6px; }
         .filter { margin: 15px 0; }
 
-        
+
         nav[role="navigation"] svg { width: 1.25rem; height: 1.25rem; }
 
 
@@ -143,6 +143,7 @@
         <a href="{{ url('/booking') }}">Запис</a>
         <a href="{{ url('/contact') }}">Контакти</a>
         <a href="{{ route('country.index') }}">Країни</a>
+        <a href="{{ route('stats.pages') }}">Статистика</a>
     </nav>
 </header>
 
