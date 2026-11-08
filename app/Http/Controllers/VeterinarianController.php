@@ -13,6 +13,7 @@ class VeterinarianController extends Controller
         $position = $request->query('position');
 
         $veterinarians = Veterinarian::query()
+            ->withCount('services')
             ->when($position, fn ($query) => $query->where('position', $position))
             ->orderBy('name')
             ->paginate(5)
