@@ -5,15 +5,36 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 
 class Service extends Model
 {
     protected $fillable = ['price'];
 
+    public function veterinarians(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Veterinarian::class,
+            'veterinarian_service',
+            'service_id',
+            'veterinarian_id'
+        );
+    }
+
     public function translations(): HasMany
     {
-        return $this->hasMany(ServiceTranslation::class);
+        return $this->hasMany(ServiceTranslation::class, 'service_id');
     }
+
+    public function getTitleAttribute(): string
+    {
+        $t = $this->translations->firstWhere('locale', app()->getLocale())
+            ?? $this->translations->first();
+
+        return $t?->title ?? 'Послуга #' . $this->id;
+    }
+
 
 
     public function translate(?string $locale = null): ?ServiceTranslation

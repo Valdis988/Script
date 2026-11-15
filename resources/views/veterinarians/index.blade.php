@@ -40,7 +40,7 @@
 
                 <div class="actions">
                     <a href="{{ route('veterinarians.edit', $veterinarian) }}">Редагувати</a>
-
+                    <a href="{{ route('veterinarians.services.edit', $veterinarian) }}">Послуги</a>
                     <form method="POST"
                           action="{{ route('veterinarians.destroy', $veterinarian) }}"
                           onsubmit="return confirm('Видалити цього ветеринара?')">
