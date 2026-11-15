@@ -23,4 +23,24 @@
     </form>
 
     <p><a href="{{ route('veterinarians.index') }}">← Повернутися до списку</a></p>
+
+    @if (session('success'))
+        <p class="success">{{ session('success') }}</p>
+    @endif
+
+    <h2>Послуги</h2>
+    <div class="tags">
+        @forelse ($veterinarian->services as $service)
+            <span class="tag">{{ $service->title }}</span>
+        @empty
+            <span>Послуг не призначено.</span>
+        @endforelse
+    </div>
+
+    <p>
+        <a href="{{ route('veterinarians.services.edit', $veterinarian) }}">
+            Керувати послугами
+        </a>
+    </p>
+
 @endsection
