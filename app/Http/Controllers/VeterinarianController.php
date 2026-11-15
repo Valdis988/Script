@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\VeterinarianRequest;
 use App\Models\Veterinarian;
 use Illuminate\Http\Request;
+use App\Models\Service;
+use App\Queries\VeterinarianFilter;
+
 
 class VeterinarianController extends Controller
 {
@@ -13,6 +16,7 @@ class VeterinarianController extends Controller
         $position = $request->query('position');
 
         $veterinarians = Veterinarian::query()
+            ->withCount('services')
             ->when($position, fn ($query) => $query->where('position', $position))
             ->orderBy('name')
             ->paginate(5)
@@ -67,4 +71,28 @@ class VeterinarianController extends Controller
             ->route('veterinarians.index')
             ->with('success', 'Ветеринара видалено.');
     }
+
+    public function admin(Request $request, VeterinarianFilter $filter)
+    {
+        $input = $request->validate([
+            'name'           => ['nullable', 'string', 'max:100'],
+            'specialization' => ['nullable', 'string', 'max:255'],
+            'serviceName'    => ['nullable', 'string', 'max:200'],
+            'service_id'     => ['nullable', 'integer', 'exists:services,id'],
+            'sort'           => ['nullable', 'string', 'max:30'],
+        ]);
+
+        $veterinarians = $filter->apply($input)
+            ->paginate(10)
+            ->withQueryString();      // зберігає пошук і сортування між сторінками
+
+        // Список послуг для випадаючого списку: id => назва (з перекладів)
+        $services = Service::with('translations')
+            ->get()
+            ->mapWithKeys(fn ($s) => [$s->id => $s->name ?? 'Послуга #' . $s->id])
+            ->sort();
+
+        return view('veterinarians.admin', compact('veterinarians', 'services'));
+    }
+
 }

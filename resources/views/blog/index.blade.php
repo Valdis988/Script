@@ -13,5 +13,15 @@
         @endforelse
     </div>
 
+    <nav class="blog-filters">
+        <a href="{{ route('blog.index') }}">
+            Усі записи
+        </a>
+        @foreach ($filters as $id => $name)
+            <a href="{{ route('blog.index', ['filter' => $id]) }}">
+                {{ $name }}
+            </a>
+        @endforeach
+    </nav>
     {{ $blogs->links() }}
 @endsection

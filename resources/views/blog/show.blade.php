@@ -19,10 +19,20 @@
         <div>{!! nl2br(e($blog->text)) !!}</div>
     </article>
 
+    <div class="tags">
+        @forelse ($blog->filters as $filter)
+            <span class="tag">
+            {{ $filter->filter_name }}
+        </span>
+        @empty
+            <span>Міток немає.</span>
+        @endforelse
+    </div>
 
     <p>
         <a href="{{ route('blog.index') }}">← До переліку</a> ·
         <a href="{{ route('blog.edit', $blog) }}">Редагувати</a>
+        <a href="{{ route('blog.tags', $blog) }}">Редагувати мітки</a>
     </p>
 
     <form method="POST"
