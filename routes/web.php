@@ -10,6 +10,9 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\VeterinarianServiceController;
 use App\Http\Controllers\FilterController;
 
+Route::get('/veterinarians/admin', [VeterinarianController::class, 'admin'])
+    ->name('veterinarians.admin');
+
 Route::get(
     '/veterinarians/{veterinarian}/services',
     [VeterinarianServiceController::class, 'edit']
